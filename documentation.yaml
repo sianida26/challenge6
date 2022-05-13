@@ -1,0 +1,402 @@
+openapi: 3.0.0
+info:
+  title: New Document
+  description: ''
+  contact: {}
+  version: '1.0'
+servers:
+- url: localhost:8000/api
+  variables: {}
+paths:
+  /cars/delete:
+    post:
+      tags:
+      - cars
+      summary: delete
+      description: ''
+      operationId: delete
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/deleteRequest'
+            example:
+              id: 2
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /cars/create:
+    post:
+      tags:
+      - cars
+      summary: create
+      description: ''
+      operationId: create
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: multipart/form-data
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - plate
+              - manufacture
+              - model
+              - image
+              - capacity
+              - description
+              - transmission
+              - type
+              - year
+              - price
+              type: object
+              properties:
+                plate:
+                  type: string
+                  example: N5801AAM
+                manufacture:
+                  type: string
+                  example: Honda
+                model:
+                  type: string
+                  example: Beat
+                image:
+                  type: string
+                  format: binary
+                capacity:
+                  type: string
+                  example: '5'
+                description:
+                  type: string
+                  example: ini sepeda
+                transmission:
+                  type: string
+                  example: automatic
+                type:
+                  type: string
+                  example: gatau
+                year:
+                  type: string
+                  example: '2018'
+                price:
+                  type: string
+                  example: '20000'
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /cars/update:
+    post:
+      tags:
+      - cars
+      summary: update
+      description: ''
+      operationId: update
+      parameters:
+      - name: Content-Type
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: multipart/form-data
+      requestBody:
+        content:
+          multipart/form-data:
+            encoding: {}
+            schema:
+              required:
+              - id
+              - plate
+              - manufacture
+              - model
+              - image
+              - capacity
+              - description
+              - transmission
+              - type
+              - year
+              - price
+              type: object
+              properties:
+                id:
+                  type: string
+                  example: '1'
+                plate:
+                  type: string
+                  example: N5801AAU
+                manufacture:
+                  type: string
+                  example: Honda
+                model:
+                  type: string
+                  example: Beat
+                image:
+                  type: string
+                  format: binary
+                capacity:
+                  type: string
+                  example: '5'
+                description:
+                  type: string
+                  example: ini sepeda
+                transmission:
+                  type: string
+                  example: automatic
+                type:
+                  type: string
+                  example: gatau
+                year:
+                  type: string
+                  example: '2018'
+                price:
+                  type: string
+                  example: '20000'
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /cars/all:
+    get:
+      tags:
+      - cars
+      summary: all
+      description: ''
+      operationId: all
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security: []
+  /getAllUsers:
+    get:
+      tags:
+      - Challenge 6
+      summary: Get All Users
+      description: ''
+      operationId: GetAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security: []
+  /createAdmin:
+    post:
+      tags:
+      - Challenge 6
+      summary: Create Admin
+      description: ''
+      operationId: CreateAdmin
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAdminRequest'
+            example:
+              username: admin
+              name: Admin
+              password: admin
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /whoAmI:
+    get:
+      tags:
+      - Challenge 6
+      summary: whoAmI
+      description: ''
+      operationId: whoAmI
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /register:
+    post:
+      tags:
+      - Challenge 6
+      summary: Register
+      description: ''
+      operationId: Register
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+            example:
+              name: Coba Akun
+              username: coba
+              password: coba
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security: []
+  /login:
+    post:
+      tags:
+      - Challenge 6
+      summary: Login
+      description: ''
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+            example:
+              username: superadmin
+              password: superadmin
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+          content:
+            text/plain:
+              schema: {}
+      deprecated: false
+      security: []
+components:
+  schemas:
+    deleteRequest:
+      title: deleteRequest
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+      example:
+        id: 2
+    CreateAdminRequest:
+      title: CreateAdminRequest
+      required:
+      - username
+      - name
+      - password
+      type: object
+      properties:
+        username:
+          type: string
+        name:
+          type: string
+        password:
+          type: string
+      example:
+        username: admin
+        name: Admin
+        password: admin
+    RegisterRequest:
+      title: RegisterRequest
+      required:
+      - name
+      - username
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+      example:
+        name: Coba Akun
+        username: coba
+        password: coba
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - username
+      - password
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      example:
+        username: superadmin
+        password: superadmin
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: cars
+  description: ''
+- name: Challenge 6
+  description: ''
+- name: Binar
+  description: ''
